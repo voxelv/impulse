@@ -2,15 +2,19 @@
 ##### © Tim Slippy - All rights reserved.
 
 ## Premise: ##
-An impulse will be sent out by a server every hour, on the hour, UTC. This impulse can be used to create more impulse.
+An impulse will be sent out by a server every hour, on the hour, UTC. 
+This impulse can be used to create more impulse.
+
 **Goal:** Amass Impulse.
 
 ## Mechanics ##
-* Impulse is received from an input buffer that can only contain one impulse. If an impulse is received while an impulse still remains in the input buffer, the impulse is forfeited.
-* Player score is based on an integer impulse count in the score buffer. Only integer amounts of impulse may be input/output to/from the score buffer.
+Impulse is received from an input buffer that can only contain one impulse. If an impulse is received while an impulse still remains in the input buffer, the impulse is forfeited.
+
+Player score is based on an integer impulse count in the score buffer. Only integer amounts of impulse may be input/output to/from the score buffer.
 
 #### Impulse Reception:
 An impulse can be received by the player's client (mobile app or client) over a secure connection. A single impulse may also be acquired via a copy-paste-able hexadecimal code sent via SMS or email (for manual entry into the app or client). 
+
 Such manual entry methods may only be received by the [factory](#factory) it is intended for and shall expire after 24 hours.
 
 #### Factory:
@@ -30,19 +34,25 @@ Such manual entry methods may only be received by the [factory](#factory) it is 
 #### Impulse
 Impulse is authorized by the server every hour UTC (as mentioned in the [premise](#premise)). This each time this happens is called a _cycle_.
 Two types of impulse exist:
+
 ##### Integer Impulse (XI, where X is an integer): Ξ
 * Integer impulse is what is what gets populated in the input buffer when an impulse is sent to a [factory](#factory) .
 * Integer impulse is also the type of impulse that is scored in the impulse score buffer.
+
 ##### Fractional Impulse (FI or PHI): Φ
 * Fractional Impulse is what most [modules](#modules) deal with.
 * Φ may only stack with Φ of the same value. Eg. you have 0.5Φ and 0.5Φ. This does **not** result in 1Ξ, it is 2x of 0.5Φ.
 
-#### Modules:
+---
+
+## Modules: ##
 Modules shall be available to the player to construct their factory.
 
 ##### Module Creation:
 Modules are created using recipes of Φ.
+
 e.g. `[0.00625Φ, 0.000125Φ, 0.000125Φ, 0.000125Φ, 0.000000011Φ] -> Impulse Miner 1`
+
 Notice the three instances of 0.000125Φ.
 
 ###### Impulse Miner:
@@ -50,6 +60,7 @@ Notice the three instances of 0.000125Φ.
 
 ###### Impulse Splitter:
 * Splits Ξ into equal amounts of Φ. Balancing shall be done to determine splitting values: 
+
 e.g. `1Ξ -> [0.5Φ, 0.5Φ] vs. 1Ξ -> [0.34Φ, 0.66Φ]`.
 
 ###### Impulse Recombinator:
@@ -78,6 +89,7 @@ RNG Impulse production:
 * Net gain over several cycles. Increased output based on symmetry of surrounding modules.
 * There shall be rotational and mirror variants.
 * Example operation:
+
 `split into 8 cycles, output could be:
 1Ξ -> [0.1, 0.1, 0.2, 0.100000001, 0.2, 0.1, 0.1, 0.1]`
 
@@ -93,6 +105,7 @@ RNG Impulse production:
 
 ###### Impulse Builder:
 * Builds specific low Φ values into equivalent higher Φ values
+
 e.g. `[0.00125Φ, 0.00875Φ] -> 0.01Φ`
 
 ###### Impulse Deconstructor:
@@ -114,28 +127,32 @@ e.g. `[0.00125Φ, 0.00875Φ] -> 0.01Φ`
 
 ###### Impulse Requester:
 * Special module that requests Φ that may have been missed due to loss of connection with an impulse cycle server.
-* Acts like an Impulse Stacker but stacks Ξ.
+* Acts like an [Impulse Stacker](#impulse-stacker) but stacks Ξ instead.
 
 ###### Impulse Augmentation:
 * Module add-on.
 * Augments modules to work at different speeds and/or efficiency.
 
 ###### Impulse Crystallizer:
-* _May not fit the theme anymore due to Φ_
+* _May not fit the theme anymore due to existence of Φ_
 * Crystallizes Ξ into color form for crafting.
 
 
+---
+
 ## Hardcore Techie Mode:
 * All Ξ and Φ shall be represented in hexadecimal.
-e.g. `0.125Φ decimal is 0.2Φ hexadecimal`
 
+e.g. `0.125Φ decimal is 0.2Φ hexadecimal`
 
 ## Competition ##
 
 #### Two contests shall exist as outlined below
+
 ##### All-Time:
 Factories shall be ranked by the ratio of impulse score per impulses received.
 This allows new factory designs to compete with old ones on an even playing field.
+
 ##### Near-Time:
 Factories shall be ranked by impulse score gain daily, weekly, monthly, and yearly.
 This allows burst-y factories to compete with each other.
