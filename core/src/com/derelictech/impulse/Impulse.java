@@ -1,33 +1,52 @@
 package com.derelictech.impulse;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-public class Impulse extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	
+public class Impulse extends Game {
+	private Stage stage;
+	private Skin skin;
+    private TextureAtlas atlas;
+    private final String xi = "\u039e";
+    private final String phi = "\u03a6";
+
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+
+        atlas = new TextureAtlas(Gdx.files.internal("uiskin.atlas"));
+        skin = new Skin(Gdx.files.internal("uiskin.json"), atlas);
+//        skin.addRegions(atlas);
+		stage = new Stage(new ScreenViewport());
+
+        final TextButton button = new TextButton(xi + phi, skin);
+        button.setWidth(200);
+        button.setHeight(50);
+        stage.addActor(button);
+
+		Gdx.input.setInputProcessor(stage);
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(0.16f, 0.16f, 0.16f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+		stage.act(Gdx.graphics.getDeltaTime());
+		stage.draw();
 	}
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
-		img.dispose();
+
 	}
 }
