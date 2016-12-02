@@ -24,25 +24,27 @@ public class Impulse extends Game {
 	@Override
 	public void create () {
 
-        atlas = new TextureAtlas(Gdx.files.internal("uiskin.atlas"));
-        skin = new Skin(Gdx.files.internal("uiskin.json"), atlas);
-//        skin.addRegions(atlas);
-		stage = new Stage(new ScreenViewport());
+//        atlas = new TextureAtlas(Gdx.files.internal("uiskin.atlas"));
+//        skin = new Skin(Gdx.files.internal("uiskin.json"), atlas);
+//		stage = new Stage(new ScreenViewport());
+//
+//        final TextButton button = new TextButton(xi + phi, skin);
+//        button.setWidth(200);
+//        button.setHeight(50);
+//        stage.addActor(button);
+//
+//		Gdx.input.setInputProcessor(stage);
 
-        final TextButton button = new TextButton(xi + phi, skin);
-        button.setWidth(200);
-        button.setHeight(50);
-        stage.addActor(button);
-
-		Gdx.input.setInputProcessor(stage);
+        this.setScreen(new OpeningScreen(this));
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(0.16f, 0.16f, 0.16f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		stage.act(Gdx.graphics.getDeltaTime());
-		stage.draw();
+//		Gdx.gl.glClearColor(0.16f, 0.16f, 0.16f, 1);
+//		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+//		stage.act(Gdx.graphics.getDeltaTime());
+//		stage.draw();
+        super.render();
 	}
 	
 	@Override
