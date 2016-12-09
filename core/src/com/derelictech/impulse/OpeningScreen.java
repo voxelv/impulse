@@ -15,7 +15,12 @@ import com.badlogic.gdx.utils.viewport.*;
 import static com.badlogic.gdx.Gdx.input;
 
 /**
- * Created by Tim on 2016-12-01.
+ * Project: impulse
+ * Package: com.derelictech.impulse
+ * File:    OpeningScreen.java
+ * Author:  voxelv
+ * Creation Date: 2016-12-01
+ * Description:
  */
 public class OpeningScreen implements Screen {
     private Game game;
@@ -52,10 +57,10 @@ public class OpeningScreen implements Screen {
         root.add(uiArea).expandY().top();
 
         button1 = new TextButton("Button 1", skin);
-        uiArea.add(button1);
+        uiArea.add(button1).size(200, 50);
         uiArea.row();
         button2 = new TextButton("Button 2", skin);
-        uiArea.add(button2);
+        uiArea.add(button2).size(200, 50);
 
 
 

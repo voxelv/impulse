@@ -14,6 +14,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
+/**
+ * Project: impulse
+ * Package: com.derelictech.impulse
+ * File:    Impulse.java
+ * Author:  voxelv
+ * Creation Date: 2016-12-01
+ * Description:
+ */
+
 public class Impulse extends Game {
 	private Stage stage;
 	private Skin skin;
