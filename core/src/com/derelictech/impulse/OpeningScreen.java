@@ -27,8 +27,7 @@ public class OpeningScreen implements Screen {
     private Skin skin;
     private Stage stage;
     private Table root;
-    private TextButton button1;
-    private TextButton button2;
+    private TextButton button1, button2, button3, button4, button5;
     private Table gameArea;
     private Table uiArea;
     private Camera camera;
@@ -57,10 +56,19 @@ public class OpeningScreen implements Screen {
         root.add(uiArea).expandY().top();
 
         button1 = new TextButton("Button 1", skin);
-        uiArea.add(button1).size(200, 50);
+        uiArea.add(button1).size(115, 30);
         uiArea.row();
         button2 = new TextButton("Button 2", skin);
-        uiArea.add(button2).size(200, 50);
+        uiArea.add(button2).size(115, 30);
+        uiArea.row();
+        button3 = new TextButton("Button 3", skin);
+        uiArea.add(button3).size(115, 30);
+        uiArea.row();
+        button4 = new TextButton("Button 4", skin);
+        uiArea.add(button4).size(115, 30);
+        uiArea.row();
+        button5 = new TextButton("Button 5", skin);
+        uiArea.add(button5).size(115, 30);
 
 
 

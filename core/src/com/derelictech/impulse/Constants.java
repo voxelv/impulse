@@ -9,6 +9,6 @@ package com.derelictech.impulse;
  * Description:
  */
 public class Constants {
-    public final static int VIEWPORT_WIDTH = 1920;
-    public final static int VIEWPORT_HEIGHT = 1080;
+    public final static int VIEWPORT_WIDTH = 640;
+    public final static int VIEWPORT_HEIGHT = 480;
 }
