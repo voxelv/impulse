@@ -32,19 +32,7 @@ public class Impulse extends Game {
 
 	@Override
 	public void create () {
-
-//        atlas = new TextureAtlas(Gdx.files.internal("uiskin.atlas"));
-//        skin = new Skin(Gdx.files.internal("uiskin.json"), atlas);
-//		stage = new Stage(new ScreenViewport());
-//
-//        final TextButton button = new TextButton(xi + phi, skin);
-//        button.setWidth(200);
-//        button.setHeight(50);
-//        stage.addActor(button);
-//
-//		Gdx.input.setInputProcessor(stage);
-
-        this.setScreen(new OpeningScreen(this));
+        this.setScreen(new GameScreen(this));
 	}
 
 	@Override

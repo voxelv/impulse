@@ -1,6 +1,7 @@
 package com.derelictech.impulse;
 
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.ScreenAdapter;
 
 /**
  * Project: impulse
@@ -10,7 +11,9 @@ import com.badlogic.gdx.Screen;
  * Creation Date: 2016-12-01
  * Description:
  */
-public class GameScreen extends AbstractScreen {
+public class GameScreen extends TableScreen {
 
-
+    public GameScreen(Game g) {
+        super(g);
+    }
 }

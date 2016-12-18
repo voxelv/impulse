@@ -3,6 +3,7 @@ package com.derelictech.impulse;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -22,7 +23,7 @@ import static com.badlogic.gdx.Gdx.input;
  * Creation Date: 2016-12-01
  * Description:
  */
-public class OpeningScreen implements Screen {
+public class OpeningScreen extends ScreenAdapter {
     private Game game;
     private Skin skin;
     private Stage stage;
