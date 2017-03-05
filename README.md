@@ -1,7 +1,7 @@
 # Impulse #
 ##### © Tim Slippy, voxelv - All rights reserved.
 
-![impulse_wip](core/assets/impulse.png)
+![impulse_wip](core/assets/impulse_wip_fancy.png)
 
 ## Premise: ##
 An impulse will be generated every hour, on the hour, UTC. This impulse can be used to create more impulse.
