@@ -1,67 +1,37 @@
 package com.derelictech.impulse;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.kotcrab.vis.runtime.scene.Scene;
 import com.kotcrab.vis.ui.VisUI;
-import com.kotcrab.vis.ui.widget.VisLabel;
-import com.kotcrab.vis.ui.widget.VisTable;
-import com.kotcrab.vis.ui.widget.VisTextButton;
 
-public class Impulse extends ApplicationAdapter {
+import java.util.HashMap;
 
-    ImpulseAssetManager manager;
-    Scene scene;
+public class Impulse extends Game {
 
-    Stage stage;
-    VisTable root;
-	
-	@Override
-	public void create () {
-        manager = new ImpulseAssetManager();
-        manager.enableFreeType();
+    HashMap<String, ImpulseScreenAdapter> screen_dict;
 
-        scene = manager.loadSceneNow("scene/main_game.scene");
-        VisUI.load(VisUI.SkinScale.X2);
-
-        stage = new Stage(new FitViewport(CONST.INIT_SCREEN_W, CONST.INIT_SCREEN_H));
-        root = new VisTable();
-        stage.addActor(root);
-        root.setFillParent(true);
-        root.left();
-
-        VisTextButton play_btn = new VisTextButton("PLAY!");
-        root.add(play_btn).expandX();
-        root.addSeparator(true);
-        VisTextButton hello = new VisTextButton("HELLO WORLD");
-        root.add(hello).expandX();
-
-        root.setDebug(true);
-	}
-
-	@Override
-	public void render () {
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        scene.render();
-        stage.draw();
-	}
-
-    @Override
-    public void resize(int width, int height) {
-        manager.update();
-        stage.getViewport().update(width, height);
+    public void setScreen(String screen_name) {
+        if(screen_dict.containsKey(screen_name)) {
+            Gdx.app.log("IMPULSE GAME", "screen is in dictionary");
+            super.setScreen(screen_dict.get(screen_name));
+        }
     }
 	
 	@Override
-	public void dispose () {
-        VisUI.dispose();
-		manager.dispose();
-        stage.dispose();
+	public void create () {
+        VisUI.load(VisUI.SkinScale.X2);
+
+        screen_dict = new HashMap<String, ImpulseScreenAdapter>();
+
+        screen_dict.put("menu", new MainMenuScreen(this));
+        screen_dict.put("game", new MainGameScreen(this));
+
+        setScreen("menu");
 	}
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        VisUI.dispose();
+    }
 }

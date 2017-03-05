@@ -68,3 +68,6 @@ build/
 ## OS Specific
 .DS_Store
 Thumbs.db
+
+## VisUI Editor backups
+vis/modules/.sceneBackup/*

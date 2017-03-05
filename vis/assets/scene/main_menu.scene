@@ -1,6 +1,6 @@
 {
   "versionCode": 2,
-  "path": "scene/main_game.scene",
+  "path": "scene/main_menu.scene",
   "width": 20.0,
   "height": 11.25,
   "pixelsPerUnit": 64.0,
@@ -38,8 +38,8 @@
           "@class": "Transform"
         },
         {
-          "originX": 0.0,
-          "originY": 0.0,
+          "originX": 10.0,
+          "originY": 5.625,
           "@class": "Origin"
         },
         {
@@ -70,64 +70,7 @@
           "@class": "Layer"
         },
         {
-          "uuid": "8886a2ce-04df-47cb-b6de-d8c210b63d40",
-          "@class": "VisUUID"
-        },
-        {
-          "zIndex": 0,
-          "@class": "Renderable"
-        },
-        {
-          "id": "impulse_img",
-          "@class": "VisID"
-        }
-      ],
-      "@class": "EntityScheme"
-    },
-    {
-      "components": [
-        {
-          "x": 4.546875,
-          "y": 7.1796894,
-          "scaleX": 1.0,
-          "scaleY": 1.0,
-          "rotation": 0.0,
-          "@class": "Transform"
-        },
-        {
-          "originX": 1.0,
-          "originY": 1.0,
-          "@class": "Origin"
-        },
-        {
-          "tint": {
-            "r": 1.0,
-            "g": 1.0,
-            "b": 1.0,
-            "a": 1.0
-          },
-          "@class": "Tint"
-        },
-        {
-          "asset": {
-            "relativePath": "gfx/impulse_icon_wip_128.png",
-            "@class": "TextureRegionAsset"
-          },
-          "@class": "AssetReference"
-        },
-        {
-          "flipX": false,
-          "flipY": false,
-          "width": 2.0,
-          "height": 2.0,
-          "@class": "ProtoVisSprite"
-        },
-        {
-          "layerId": 0,
-          "@class": "Layer"
-        },
-        {
-          "uuid": "a7c49fc8-b21e-4a75-b5e0-4c8a8595578e",
+          "uuid": "6dbc4eb7-e968-4f9e-8602-d9b25ee6831a",
           "@class": "VisUUID"
         },
         {
