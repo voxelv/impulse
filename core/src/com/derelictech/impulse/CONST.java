@@ -11,6 +11,9 @@ import com.badlogic.gdx.Gdx;
  * Description: Contains constants for Impulse
  */
 public class CONST {
+    public static final int INIT_SCREEN_W = 1280;
+    public static final int INIT_SCREEN_H = 720;
+
     public static final float VP_WIDTH = 20;
     public static final float VP_HEIGHT = 11.25f;
     public static final float ASPECT_RATIO = (float)Gdx.graphics.getHeight() / (float)Gdx.graphics.getWidth();
