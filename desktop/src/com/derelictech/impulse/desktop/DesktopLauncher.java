@@ -10,12 +10,13 @@ import com.derelictech.impulse.Impulse;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.resizable = false;
+        config.width = 1280;
+        config.height = 720;
         config.initialBackgroundColor = new Color(0x303030FF);
         config.title = "Impulse";
-        config.addIcon("impulse_icon_wip_16.png", Files.FileType.Internal);
-        config.addIcon("impulse_icon_wip_32.png", Files.FileType.Internal);
-        config.addIcon("impulse_icon_wip_128.png", Files.FileType.Internal);
+        config.addIcon("gfx/impulse_icon_wip_16.png", Files.FileType.Internal);
+        config.addIcon("gfx/impulse_icon_wip_32.png", Files.FileType.Internal);
+        config.addIcon("gfx/impulse_icon_wip_128.png", Files.FileType.Internal);
 		new LwjglApplication(new Impulse(), config);
 	}
 }

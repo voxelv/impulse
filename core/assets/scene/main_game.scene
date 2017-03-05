@@ -1,0 +1,177 @@
+{
+  "viewport": "FIT",
+  "width": 20,
+  "height": 11.25,
+  "pixelsPerUnit": 64,
+  "textureAtlasPath": "textures.atlas",
+  "physicsSettings": {
+    "physicsEnabled": false,
+    "gravityX": 0,
+    "gravityY": 0,
+    "allowSleep": false
+  },
+  "variables": {
+    "variables": {}
+  },
+  "groupIds": {},
+  "layers": [
+    {
+      "cordsSystem": {
+        "class": "LayerCordsSystem",
+        "value": "WORLD"
+      },
+      "name": "Background",
+      "id": 0
+    }
+  ],
+  "entities": [
+    {
+      "components": [
+        {
+          "class": "Transform",
+          "x": 0,
+          "y": 0,
+          "scaleX": 1,
+          "scaleY": 1,
+          "rotation": 0
+        },
+        {
+          "class": "Origin",
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "class": "Tint",
+          "tint": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        },
+        {
+          "class": "AssetReference",
+          "asset": {
+            "class": "TextureRegionAsset",
+            "relativePath": "gfx/impulse_wip_fancy.png"
+          }
+        },
+        {
+          "class": "ProtoVisSprite",
+          "flipX": false,
+          "flipY": false,
+          "width": 20,
+          "height": 11.25
+        },
+        {
+          "class": "Layer",
+          "layerId": 0
+        },
+        {
+          "class": "Renderable",
+          "zIndex": 0
+        },
+        {
+          "class": "VisID",
+          "id": "impulse_img"
+        }
+      ]
+    },
+    {
+      "components": [
+        {
+          "class": "Transform",
+          "x": 3,
+          "y": 7,
+          "scaleX": 1,
+          "scaleY": 1,
+          "rotation": 0
+        },
+        {
+          "class": "Origin",
+          "originX": 1,
+          "originY": 1
+        },
+        {
+          "class": "Tint",
+          "tint": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        },
+        {
+          "class": "AssetReference",
+          "asset": {
+            "class": "TextureRegionAsset",
+            "relativePath": "gfx/impulse_icon_wip_128.png"
+          }
+        },
+        {
+          "class": "ProtoVisSprite",
+          "flipX": false,
+          "flipY": false,
+          "width": 2,
+          "height": 2
+        },
+        {
+          "class": "Layer",
+          "layerId": 0
+        },
+        {
+          "class": "Renderable",
+          "zIndex": 0
+        }
+      ]
+    },
+    {
+      "components": [
+        {
+          "class": "Transform",
+          "x": 16,
+          "y": 9,
+          "scaleX": 1,
+          "scaleY": 1,
+          "rotation": 0
+        },
+        {
+          "class": "Origin",
+          "originX": 1,
+          "originY": 1
+        },
+        {
+          "class": "Tint",
+          "tint": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        },
+        {
+          "class": "AssetReference",
+          "asset": {
+            "class": "TextureRegionAsset",
+            "relativePath": "gfx/impulse_icon_wip_128.png"
+          }
+        },
+        {
+          "class": "ProtoVisSprite",
+          "flipX": false,
+          "flipY": false,
+          "width": 2,
+          "height": 2
+        },
+        {
+          "class": "Layer",
+          "layerId": 0
+        },
+        {
+          "class": "Renderable",
+          "zIndex": 0
+        }
+      ]
+    }
+  ]
+}
