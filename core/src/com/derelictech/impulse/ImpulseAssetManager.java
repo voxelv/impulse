@@ -16,11 +16,11 @@ import com.kotcrab.vis.runtime.scene.VisAssetManager;
  */
 public class ImpulseAssetManager extends VisAssetManager {
 
-    public static Batch batch;
+    public static Batch batch = new SpriteBatch();
     public static FreeTypeFontProvider freetypefontprovider;
 
     public ImpulseAssetManager() {
-        super(batch = new SpriteBatch());
+        super(batch);
     }
 
     public void enableFreeType() {

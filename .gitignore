@@ -71,3 +71,4 @@ Thumbs.db
 
 ## VisUI Editor backups
 vis/modules/.sceneBackup/*
+/.nb-gradle/
