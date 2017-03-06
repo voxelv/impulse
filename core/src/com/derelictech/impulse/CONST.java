@@ -17,4 +17,8 @@ public class CONST {
     public static final float VP_WIDTH = 20;
     public static final float VP_HEIGHT = 11.25f;
     public static final float ASPECT_RATIO = (float)Gdx.graphics.getHeight() / (float)Gdx.graphics.getWidth();
+
+
+    public static final String XI = "\u039e";
+    public static final String PHI = "\u03a6";
 }

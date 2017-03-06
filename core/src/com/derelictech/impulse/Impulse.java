@@ -1,24 +1,36 @@
 package com.derelictech.impulse;
-
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.kotcrab.vis.ui.VisUI;
 
 import java.util.HashMap;
 
+import static com.badlogic.gdx.Application.LOG_DEBUG;
+
+/**
+ * Project: impulse
+ * Package: com.derelictech.impulse
+ * File:    Impulse.java
+ * Author:  voxelv
+ * Creation Date: 2017-03-05
+ * Description: Impulse Game
+ */
+
 public class Impulse extends Game {
 
-    HashMap<String, ImpulseScreenAdapter> screen_dict;
+    private HashMap<String, ImpulseScreenAdapter> screen_dict;
 
-    public void setScreen(String screen_name) {
+    private void setScreen(String screen_name) {
         if(screen_dict.containsKey(screen_name)) {
-            Gdx.app.log("IMPULSE GAME", "screen is in dictionary");
+            Gdx.app.debug("IMPULSE GAME", "screen is in dictionary");
             super.setScreen(screen_dict.get(screen_name));
         }
     }
 	
 	@Override
 	public void create () {
+        Gdx.app.setLogLevel(LOG_DEBUG);
+
         VisUI.load(VisUI.SkinScale.X2);
 
         screen_dict = new HashMap<String, ImpulseScreenAdapter>();

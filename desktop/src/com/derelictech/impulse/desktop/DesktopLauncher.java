@@ -17,6 +17,7 @@ public class DesktopLauncher {
         config.addIcon("gfx/impulse_icon_wip_16.png", Files.FileType.Internal);
         config.addIcon("gfx/impulse_icon_wip_32.png", Files.FileType.Internal);
         config.addIcon("gfx/impulse_icon_wip_128.png", Files.FileType.Internal);
+
 		new LwjglApplication(new Impulse(), config);
 	}
 }
