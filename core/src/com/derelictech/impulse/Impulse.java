@@ -17,7 +17,13 @@ import static com.badlogic.gdx.Application.LOG_DEBUG;
  */
 
 public class Impulse extends Game {
-
+    /**
+     * Impulse has two types.
+     */
+    public enum Type {
+        XI_Ξ,   /* Integer Impulse (XI, Ξ) */
+        PHI_Φ   /* Fractional Impulse (FI or PHI, Φ) */
+    }
     private HashMap<String, ImpulseScreenAdapter> screen_dict;
 
     private void setScreen(String screen_name) {
