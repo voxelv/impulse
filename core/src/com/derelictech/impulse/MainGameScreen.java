@@ -4,6 +4,7 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.derelictech.impulse.game.Module;
 import com.derelictech.impulse.util.StringUtils;
 import com.kotcrab.vis.ui.FocusManager;
 import com.kotcrab.vis.ui.util.Validators;
@@ -39,6 +40,7 @@ public class MainGameScreen extends ImpulseScreenAdapter {
     @Override
     public void show() {
         super.show();
+
         root.add(new VisLabel("HELLO GAME SCENE"));
 
         root.row();
@@ -47,6 +49,9 @@ public class MainGameScreen extends ImpulseScreenAdapter {
         root.add(input_text).width(400);
         root.row();
         root.add(output_text);
+        root.row();
+        VisTextButton module_btn= new VisTextButton("NEW MODULE");
+        root.add(module_btn);
 
         ////////////////////// Event Handling //////////////////////
         back_btn.addListener(new ClickListener(Input.Buttons.LEFT) {
@@ -78,5 +83,12 @@ public class MainGameScreen extends ImpulseScreenAdapter {
                 return true;
             }
         }); /* END input_text.addListener() */
+
+        module_btn.addListener(new ClickListener(Input.Buttons.LEFT) {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Module module = new Module();
+            }
+        });
     }
 }

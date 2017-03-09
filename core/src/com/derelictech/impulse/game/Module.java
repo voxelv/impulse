@@ -12,12 +12,14 @@ import java.util.List;
  * Creation Date: 2017-03-07
  * Description: A module has connectors, and buffers [WIP] more than that, check IModule
  */
-public abstract class Module {
+public class Module {
 
     List<ImpulseConnector> connectors;
+    ModuleRecipe recipe;
 
     public Module() {
         connectors = new ArrayList<ImpulseConnector>(10);
+        recipe = new ModuleRecipe();
     }
 
     public ImpulseConnector addConnector(Impulse.Type impulse_type) {
