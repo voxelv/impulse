@@ -3,10 +3,8 @@ import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonWriter;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -20,40 +18,36 @@ import java.util.HashMap;
  */
 public class ModuleRecipes {
 
-    private static ModuleRecipes inst;
+    private static ModuleRecipesHolder holder;
 
-    private static HashMap<String, ModuleRecipe> recipes;
-
-    public static void load(){
+    public static void load() {
         import_recipes();
     }
 
     private static void import_recipes() {
-        inst = new ModuleRecipes();
         FileHandle cnfg_file = Gdx.files.getFileHandle("cnfg_module_recipes.json", Files.FileType.Internal);
 
         Json json = new Json(JsonWriter.OutputType.json);
-        json.setElementType(ModuleRecipes.class, "recipes", ModuleRecipe.class);
 
-        JSONTest newjt = json.fromJson(
-                JSONTest.class,
-                cnfg_file);
+        json.setElementType(ModuleRecipesHolder.class, "recipes", ModuleRecipe.class);
 
-        Gdx.app.debug("MR", newjt.toString());
+        holder = json.fromJson(ModuleRecipesHolder.class, cnfg_file);
+
+        Gdx.app.debug("MR", holder.toString());
     }
 
-    static ModuleRecipe getRecipe(String module_name) {
-//        return recipes.get(module_name);
-        Gdx.app.debug("MR", "Hello test from getRecipe" + recipes.toString());
+    public static ModuleRecipe getRecipe(String module_name) {
+        Gdx.app.debug("MR", "Hello test from getRecipe" + holder.toString());
         return null;
-    }
-
-    public static HashMap<String, ModuleRecipe> getRecipes() {
-        return recipes;
-    }
-
-    public static void setRecipes(HashMap<String, ModuleRecipe> recipes) {
-        inst.recipes = recipes;
     }
 }
 
+class ModuleRecipesHolder {
+//    private ModuleRecipesHolder() {}
+
+    private HashMap<String, ModuleRecipe> recipes;
+
+    public void setRecipes(HashMap<String, ModuleRecipe> recipes) {
+        this.recipes = recipes;
+    }
+}

@@ -33,7 +33,7 @@ public class Impulse extends Game {
             super.setScreen(screen_dict.get(screen_name));
         }
     }
-	
+
 	@Override
 	public void create () {
         Gdx.app.setLogLevel(LOG_DEBUG);

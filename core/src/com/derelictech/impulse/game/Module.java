@@ -19,7 +19,6 @@ public class Module {
 
     public Module() {
         connectors = new ArrayList<ImpulseConnector>(10);
-//        recipe = ModuleRecipes.getRecipe("module1"); // TODO: TEMPORARY INIT
     }
 
     public ImpulseConnector addConnector(Impulse.Type impulse_type) {
