@@ -1,6 +1,7 @@
 package com.derelictech.impulse;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.derelictech.impulse.game.ModuleRecipes;
 import com.kotcrab.vis.ui.VisUI;
 
 import java.util.HashMap;
@@ -36,6 +37,8 @@ public class Impulse extends Game {
 	@Override
 	public void create () {
         Gdx.app.setLogLevel(LOG_DEBUG);
+
+        ModuleRecipes.load();
 
         VisUI.load(VisUI.SkinScale.X2);
 

@@ -1,12 +1,14 @@
 package com.derelictech.impulse.game;
+import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.JsonWriter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 
 /**
  * Project: impulse
@@ -16,26 +18,42 @@ import java.util.HashMap;
  * Creation Date: 2017-03-07
  * Description: Describes a recipe to make a {@link Module}
  */
-public class ModuleRecipes extends ArrayList<ModuleRecipe> {
-    public static final HashMap<String, ModuleRecipe> recipes;
+public class ModuleRecipes {
 
-    static {
-        recipes = new HashMap<String, ModuleRecipe>();
+    private static ModuleRecipes inst;
+
+    private static HashMap<String, ModuleRecipe> recipes;
+
+    public static void load(){
         import_recipes();
     }
 
-    private static void import_recipes(){
-        JSONParser jsonParser = new JSONParser();
-        JSONObject mojo = null;
-        try {
-            mojo = (JSONObject) jsonParser.parse(Gdx.files.internal("cnfg_module_recipes.json").reader());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Gdx.app.debug("MODULE RECIPE", mojo.toString());
+    private static void import_recipes() {
+        inst = new ModuleRecipes();
+        FileHandle cnfg_file = Gdx.files.getFileHandle("cnfg_module_recipes.json", Files.FileType.Internal);
+
+        Json json = new Json(JsonWriter.OutputType.json);
+        json.setElementType(ModuleRecipes.class, "recipes", ModuleRecipe.class);
+
+        JSONTest newjt = json.fromJson(
+                JSONTest.class,
+                cnfg_file);
+
+        Gdx.app.debug("MR", newjt.toString());
+    }
+
+    static ModuleRecipe getRecipe(String module_name) {
+//        return recipes.get(module_name);
+        Gdx.app.debug("MR", "Hello test from getRecipe" + recipes.toString());
+        return null;
+    }
+
+    public static HashMap<String, ModuleRecipe> getRecipes() {
+        return recipes;
+    }
+
+    public static void setRecipes(HashMap<String, ModuleRecipe> recipes) {
+        inst.recipes = recipes;
     }
 }
-
 

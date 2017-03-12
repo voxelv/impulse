@@ -1,5 +1,7 @@
 package com.derelictech.impulse.game;
 
+import java.util.ArrayList;
+
 /**
  * Project: impulse
  * Package: com.derelictech.impulse.game
@@ -8,4 +10,15 @@ package com.derelictech.impulse.game;
  * Description:
  */
 public class ModuleRecipe {
+
+    private ArrayList<Long> xi;
+    private ArrayList<Long> phi;
+
+    public ArrayList<Long> getXI() {
+        return xi;
+    }
+
+    public ArrayList<Long> getPHI() {
+        return phi;
+    }
 }
