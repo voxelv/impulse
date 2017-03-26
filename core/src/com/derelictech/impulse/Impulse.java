@@ -32,16 +32,7 @@ public class Impulse extends Game {
 
 	@Override
 	public void create () {
-        this.setScreen(new GameScreen(this));
-	}
-
-	@Override
-	public void render () {
-//		Gdx.gl.glClearColor(0.16f, 0.16f, 0.16f, 1);
-//		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-//		stage.act(Gdx.graphics.getDeltaTime());
-//		stage.draw();
-        super.render();
+        this.setScreen(new OpeningScreen(this));
 	}
 	
 	@Override

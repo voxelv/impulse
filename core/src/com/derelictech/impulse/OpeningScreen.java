@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -34,6 +35,10 @@ public class OpeningScreen extends ScreenAdapter {
     private Camera camera;
 
     public OpeningScreen(Game g) {
+        System.out.println(Gdx.files.internal("the_white_pixel.png"));
+        System.out.println(Gdx.files.external("the_white_pixel.png"));
+        System.out.println(Gdx.files.absolute("the_white_pixel.png"));
+        System.out.println(Gdx.files.classpath("the_white_pixel.png"));
         game = g;
 
         skin = new Skin(Gdx.files.internal("uiskin.json"));
@@ -72,7 +77,6 @@ public class OpeningScreen extends ScreenAdapter {
         uiArea.add(button5).size(115, 30);
 
 
-
         root.debugAll();
     }
 
@@ -83,8 +87,8 @@ public class OpeningScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-//        Gdx.gl.glClearColor(0.16f, 0.16f, 0.16f, 1);
-        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClearColor(0.16f, 0.16f, 0.16f, 1);
+//        Gdx.gl.glClearColor(0.75f, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act(delta);
         stage.draw();

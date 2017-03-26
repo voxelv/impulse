@@ -3,9 +3,7 @@ package com.derelictech.impulse;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -28,6 +26,8 @@ public class TableScreen extends ScreenAdapter {
     private Table root;
     private Camera camera;
 
+    private Texture background;
+
     public TableScreen(Game g) {
         game = g;
 
@@ -43,13 +43,19 @@ public class TableScreen extends ScreenAdapter {
         root.setFillParent(true);
         root.debugAll();
         stage.addActor(root);
+
+        Pixmap p = new Pixmap(1, 1, Pixmap.Format.RGBA8888);
+        p.setColor(Color.WHITE);
+        p.drawPixel(0, 0);
+
+        background = new Texture(p);
     }
 
     @Override
     public void render(float delta) {
-//        Gdx.gl.glClearColor(0.16f, 0.16f, 0.16f, 1);
-        Gdx.gl.glClearColor(0.75f, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        stage.getBatch().draw(background, root.getX(), root.getY(), root.getOriginX(), root.getOriginY(), root.getWidth(),
+                root.getHeight(), root.getScaleX(), root.getScaleY(), root.getRotation(),
+                0, 0, 1, 1, false, false);
         stage.act(delta);
         stage.draw();
     }
@@ -62,5 +68,6 @@ public class TableScreen extends ScreenAdapter {
     @Override
     public void dispose() {
         stage.dispose();
+        background.dispose();
     }
 }
