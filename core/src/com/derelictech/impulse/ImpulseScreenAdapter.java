@@ -17,14 +17,17 @@ import com.kotcrab.vis.ui.widget.VisTable;
  * Description: Abstract Screen
  */
 abstract class ImpulseScreenAdapter extends ScreenAdapter {
-    static Game game;
+    static Impulse game;
 
     Stage stage;
     VisTable root;
 
-    ImpulseScreenAdapter(Game g) {
+    ImpulseScreenAdapter(Impulse g) {
         game = g;
+    }
 
+    @Override
+    public void show() {
         /* Setup stage */
         stage = new Stage(new FitViewport(CONST.INIT_SCREEN_W, CONST.INIT_SCREEN_H));
 
@@ -32,10 +35,7 @@ abstract class ImpulseScreenAdapter extends ScreenAdapter {
         root = new VisTable();
         stage.addActor(root);
         root.setFillParent(true);
-    }
 
-    @Override
-    public void show() {
         /* Reset the input processor each time this screen is shown */
         Gdx.input.setInputProcessor(stage);
     }
@@ -53,7 +53,7 @@ abstract class ImpulseScreenAdapter extends ScreenAdapter {
     }
 
     @Override
-    public void dispose () {
+    public void hide() {
         stage.dispose();
     }
 }

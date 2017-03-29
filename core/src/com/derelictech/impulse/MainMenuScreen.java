@@ -21,7 +21,7 @@ public class MainMenuScreen extends ImpulseScreenAdapter {
     VisTable blank;
     VisTable menu_area;
 
-    public MainMenuScreen(Game g) {
+    public MainMenuScreen(Impulse g) {
         super(g);
     }
 
@@ -54,11 +54,9 @@ public class MainMenuScreen extends ImpulseScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                MainMenuScreen.game.setScreen(new MainGameScreen(MainMenuScreen.game));
+                game.setImpulseScreen("game");
             }
         });
-
-
 
         quit_btn.addListener(new ClickListener(Input.Buttons.LEFT) {
             @Override

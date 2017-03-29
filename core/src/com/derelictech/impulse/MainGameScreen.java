@@ -1,11 +1,12 @@
 package com.derelictech.impulse;
 
+import com.artemis.*;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.derelictech.impulse.ecs.ConsolePrintSystem;
 import com.derelictech.impulse.game.Module;
-import com.derelictech.impulse.util.StringUtils;
 import com.kotcrab.vis.ui.FocusManager;
 import com.kotcrab.vis.ui.util.Validators;
 import com.kotcrab.vis.ui.widget.*;
@@ -20,23 +21,33 @@ import com.kotcrab.vis.ui.widget.*;
  */
 public class MainGameScreen extends ImpulseScreenAdapter {
 
-    Integer num = -1;
+    public static World world;
 
-    private final VisTextButton back_btn;
-    private final VisValidatableTextField input_text;
-    private final VisLabel output_text;
+    private Integer num = -1;
 
-    public MainGameScreen(Game g) {
+    private VisTextButton back_btn;
+    private VisValidatableTextField input_text;
+    private VisLabel output_text;
+
+    public MainGameScreen(Impulse g) {
         super(g);
-
-        back_btn = new VisTextButton("BACK");
-        input_text = new VisValidatableTextField(Validators.INTEGERS);
-        output_text = new VisLabel("");
     }
 
     @Override
     public void show() {
         super.show();
+
+        WorldConfiguration config = new WorldConfigurationBuilder()
+            .with(new ConsolePrintSystem())
+            .build();
+        world = new World(config);
+        ConsolePrintSystem.create("TEST");
+        ConsolePrintSystem.create("OHAI");
+        ConsolePrintSystem.create("WRLD");
+
+        back_btn = new VisTextButton("BACK");
+        input_text = new VisValidatableTextField(Validators.INTEGERS);
+        output_text = new VisLabel("");
 
         root.add(new VisLabel("HELLO GAME SCENE"));
 
@@ -55,7 +66,7 @@ public class MainGameScreen extends ImpulseScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                game.setScreen(new MainMenuScreen(game));
+                game.setImpulseScreen("menu");
             }
         });
 
@@ -87,5 +98,18 @@ public class MainGameScreen extends ImpulseScreenAdapter {
                 Module module = new Module();
             }
         });
+    }
+
+    @Override
+    public void hide() {
+        super.hide();
+        world.dispose();
+    }
+
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+        world.setDelta(delta);
+        world.process();
     }
 }

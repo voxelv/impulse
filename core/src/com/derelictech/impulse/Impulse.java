@@ -28,10 +28,10 @@ public class Impulse extends Game {
     }
     private HashMap<String, ImpulseScreenAdapter> screen_dict;
 
-    private void setScreen(String screen_name) {
+    void setImpulseScreen(String screen_name) {
         if(screen_dict.containsKey(screen_name)) {
             Gdx.app.debug("IMPULSE GAME", "screen is in dictionary");
-            super.setScreen(screen_dict.get(screen_name));
+            this.setScreen(screen_dict.get(screen_name));
         }
     }
 
@@ -48,7 +48,7 @@ public class Impulse extends Game {
         screen_dict.put("menu", new MainMenuScreen(this));
         screen_dict.put("game", new MainGameScreen(this));
 
-        setScreen("menu");
+        setImpulseScreen("menu");
 	}
 
     @Override
