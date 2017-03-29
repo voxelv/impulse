@@ -22,7 +22,7 @@ public class MainMenuScreen extends ImpulseScreenAdapter {
     VisTable menu_area;
 
     public MainMenuScreen(Game g) {
-        super(g, "scene/main_menu.scene");
+        super(g);
     }
 
     @Override
@@ -67,10 +67,5 @@ public class MainMenuScreen extends ImpulseScreenAdapter {
                 Gdx.app.exit();
             }
         });
-
-
-//        stage.setDebugAll(true);
-//        root.setDebug(true);
-//        menu_area.debug();
     }
 }

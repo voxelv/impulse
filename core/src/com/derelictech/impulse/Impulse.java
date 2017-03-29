@@ -1,6 +1,7 @@
 package com.derelictech.impulse;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.derelictech.impulse.game.ModuleRecipes;
 import com.kotcrab.vis.ui.VisUI;
 
@@ -54,5 +55,8 @@ public class Impulse extends Game {
     public void dispose() {
         super.dispose();
         VisUI.dispose();
+        for(Screen s : screen_dict.values()) {
+            s.dispose();
+        }
     }
 }

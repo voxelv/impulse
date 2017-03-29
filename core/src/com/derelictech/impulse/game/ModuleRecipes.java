@@ -43,11 +43,5 @@ public class ModuleRecipes {
 }
 
 class ModuleRecipesHolder {
-//    private ModuleRecipesHolder() {}
-
     private HashMap<String, ModuleRecipe> recipes;
-
-    public void setRecipes(HashMap<String, ModuleRecipe> recipes) {
-        this.recipes = recipes;
-    }
 }

@@ -8,10 +8,7 @@ import com.derelictech.impulse.game.Module;
 import com.derelictech.impulse.util.StringUtils;
 import com.kotcrab.vis.ui.FocusManager;
 import com.kotcrab.vis.ui.util.Validators;
-import com.kotcrab.vis.ui.widget.VisLabel;
-import com.kotcrab.vis.ui.widget.VisTextButton;
-import com.kotcrab.vis.ui.widget.VisTextField;
-import com.kotcrab.vis.ui.widget.VisValidatableTextField;
+import com.kotcrab.vis.ui.widget.*;
 
 /**
  * Project: impulse
@@ -30,7 +27,7 @@ public class MainGameScreen extends ImpulseScreenAdapter {
     private final VisLabel output_text;
 
     public MainGameScreen(Game g) {
-        super(g, "scene/main_game.scene");
+        super(g);
 
         back_btn = new VisTextButton("BACK");
         input_text = new VisValidatableTextField(Validators.INTEGERS);
