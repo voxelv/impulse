@@ -33,14 +33,13 @@ public class ConsolePrintSystem extends IntervalIteratingSystem {
     @Override
     protected void process(int entityId) {
         String text = mPrintableText.get(entityId).text;
-        boolean en = mPrintableText.get(entityId).enabled;
 
-        if(text.equals("OHAI") && en) {
+        if(text.equals("OHAI") && mPrintableText.get(entityId).enabled) {
             mPrintableText.get(entityId).enabled = false;
             Gdx.app.debug("PRNT_SYS", "msg: " + text + " en: " + mPrintableText.get(entityId).enabled);
         }
 
-        if(en) {
+        if(mPrintableText.get(entityId).enabled) {
             Gdx.app.debug("TAG", "MESSAGE FROM: " + entityId + " SAYING: " + text);
         }
     }

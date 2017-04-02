@@ -26,8 +26,6 @@ public class MainMenuScreen extends ImpulseScreenAdapter {
     int MENU_PAD = 1;
     int MENU_WIDTH = 300;
 
-    boolean debug = false;
-
     public MainMenuScreen(Game g) {
         super(g);
     }
@@ -79,8 +77,8 @@ public class MainMenuScreen extends ImpulseScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                debug = !debug;
-                stage.setDebugAll(debug);
+                Impulse.do_debug = !Impulse.do_debug;
+                stage.setDebugAll(Impulse.do_debug);
             }
         });
 

@@ -39,7 +39,7 @@ class ImpulseScreenAdapter extends ScreenAdapter {
         /* Reset the input processor each time this screen is shown */
         Gdx.input.setInputProcessor(stage);
 
-//        stage.setDebugAll(true);
+        stage.setDebugAll(Impulse.do_debug);
     }
 
     @Override

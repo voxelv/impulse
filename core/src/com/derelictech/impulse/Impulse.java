@@ -5,6 +5,7 @@ import com.artemis.WorldConfigurationBuilder;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.derelictech.impulse.ecs.system.ClearAllEntitiesSystem;
 import com.derelictech.impulse.ecs.system.ConsolePrintSystem;
 import com.derelictech.impulse.ecs.system.ScreenManager;
 import com.kotcrab.vis.ui.VisUI;
@@ -21,6 +22,7 @@ import com.kotcrab.vis.ui.VisUI;
 public class Impulse extends Game {
     private static World w;
     private static Game g;
+    public static boolean do_debug = false;
 
     public Impulse() {
         super();
@@ -39,6 +41,8 @@ public class Impulse extends Game {
                     .with(new ScreenManager())
 
                     .with(new ConsolePrintSystem())
+
+                    .with(new ClearAllEntitiesSystem())
 
                     .build());
         }

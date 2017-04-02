@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.derelictech.impulse.ecs.system.ClearAllEntitiesSystem;
 import com.derelictech.impulse.ecs.system.ConsolePrintSystem;
 import com.derelictech.impulse.ecs.system.ScreenManager;
 import com.derelictech.impulse.game.Module;
@@ -36,6 +37,7 @@ public class MainGameScreen extends ImpulseScreenAdapter {
     public void show() {
         super.show();
         ConsolePrintSystem cps = Impulse.world().getSystem(ConsolePrintSystem.class);
+        ClearAllEntitiesSystem.reset();
 
         cps.create("TEST");
         cps.create("OHAI");
@@ -48,14 +50,14 @@ public class MainGameScreen extends ImpulseScreenAdapter {
         root.add(new VisLabel("HELLO GAME SCENE"));
 
         root.row();
-        root.add(back_btn);
+        root.add(output_text).left();
         root.row();
-        root.add(input_text).width(400);
-        root.row();
-        root.add(output_text);
+        root.add(input_text).width(400).pad(1);
         root.row();
         VisTextButton module_btn= new VisTextButton("NEW MODULE");
-        root.add(module_btn);
+        root.add(module_btn).fillX().pad(1);
+        root.row();
+        root.add(back_btn).fillX().pad(1);
 
         ////////////////////// Event Handling //////////////////////
         back_btn.addListener(new ClickListener(Input.Buttons.LEFT) {
@@ -99,6 +101,7 @@ public class MainGameScreen extends ImpulseScreenAdapter {
     @Override
     public void hide() {
         super.hide();
+        ClearAllEntitiesSystem.deleteAll();
     }
 
     @Override
