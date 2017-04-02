@@ -1,4 +1,4 @@
-package com.derelictech.impulse.ecs;
+package com.derelictech.impulse.ecs.component;
 
 import com.artemis.Component;
 
@@ -10,5 +10,6 @@ import com.artemis.Component;
  * Description:
  */
 public class PrintableText extends Component {
-    String text;
+    public boolean enabled = true;
+    public String text;
 }

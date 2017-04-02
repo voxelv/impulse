@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 /**
  * Project: impulse
- * Package: com.derelictech.impulse.game
+ * Package: com.derelictech.impulse.g
  * Author:  voxelv
  * Creation Date: 2017-03-10
  * Description:

@@ -4,8 +4,10 @@ import com.artemis.*;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.derelictech.impulse.ecs.ConsolePrintSystem;
+import com.derelictech.impulse.ecs.system.ConsolePrintSystem;
+import com.derelictech.impulse.ecs.system.ScreenManager;
 import com.derelictech.impulse.game.Module;
 import com.kotcrab.vis.ui.FocusManager;
 import com.kotcrab.vis.ui.util.Validators;
@@ -21,29 +23,23 @@ import com.kotcrab.vis.ui.widget.*;
  */
 public class MainGameScreen extends ImpulseScreenAdapter {
 
-    public static World world;
-
-    private Integer num = -1;
-
+    private Table blank;
     private VisTextButton back_btn;
     private VisValidatableTextField input_text;
     private VisLabel output_text;
 
-    public MainGameScreen(Impulse g) {
+    public MainGameScreen(Game g) {
         super(g);
     }
 
     @Override
     public void show() {
         super.show();
+        ConsolePrintSystem cps = Impulse.world().getSystem(ConsolePrintSystem.class);
 
-        WorldConfiguration config = new WorldConfigurationBuilder()
-            .with(new ConsolePrintSystem())
-            .build();
-        world = new World(config);
-        ConsolePrintSystem.create("TEST");
-        ConsolePrintSystem.create("OHAI");
-        ConsolePrintSystem.create("WRLD");
+        cps.create("TEST");
+        cps.create("OHAI");
+        cps.create("WRLD");
 
         back_btn = new VisTextButton("BACK");
         input_text = new VisValidatableTextField(Validators.INTEGERS);
@@ -66,7 +62,7 @@ public class MainGameScreen extends ImpulseScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                game.setImpulseScreen("menu");
+                ScreenManager.setScreen("menu");
             }
         });
 
@@ -79,8 +75,8 @@ public class MainGameScreen extends ImpulseScreenAdapter {
                         boolean textbox_valid = ((VisValidatableTextField) event.getTarget()).isInputValid();
 
                         if(textbox_valid) {
-                            num = Integer.parseInt(text);
-                            output_text.setText("I can haz " + num + CONST.XI + "?");
+                            output_text.setText("I can haz " + Integer.parseInt(text) + CONST.XI + "?");
+                            input_text.setText("");
                         }
                     case Input.Keys.ESCAPE:
                         FocusManager.resetFocus(stage);
@@ -103,13 +99,10 @@ public class MainGameScreen extends ImpulseScreenAdapter {
     @Override
     public void hide() {
         super.hide();
-        world.dispose();
     }
 
     @Override
     public void render(float delta) {
         super.render(delta);
-        world.setDelta(delta);
-        world.process();
     }
 }

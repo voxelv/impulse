@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 /**
  * Project: impulse
- * Package: com.derelictech.impulse.game
+ * Package: com.derelictech.impulse.g
  * File:    ModuleRecipes.java
  * Author:  voxelv
  * Creation Date: 2017-03-07

@@ -1,13 +1,13 @@
 package com.derelictech.impulse;
+
+import com.artemis.World;
+import com.artemis.WorldConfigurationBuilder;
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
-import com.derelictech.impulse.game.ModuleRecipes;
+import com.derelictech.impulse.ecs.system.ConsolePrintSystem;
+import com.derelictech.impulse.ecs.system.ScreenManager;
 import com.kotcrab.vis.ui.VisUI;
-
-import java.util.HashMap;
-
-import static com.badlogic.gdx.Application.LOG_DEBUG;
 
 /**
  * Project: impulse
@@ -19,44 +19,57 @@ import static com.badlogic.gdx.Application.LOG_DEBUG;
  */
 
 public class Impulse extends Game {
-    /**
-     * Impulse has two types.
-     */
-    public enum Type {
-        XI_Ξ,   /* Integer Impulse (XI, Ξ) */
-        PHI_Φ   /* Fractional Impulse (FI or PHI, Φ) */
-    }
-    private HashMap<String, ImpulseScreenAdapter> screen_dict;
+    private static World w;
+    private static Game g;
 
-    void setImpulseScreen(String screen_name) {
-        if(screen_dict.containsKey(screen_name)) {
-            Gdx.app.debug("IMPULSE GAME", "screen is in dictionary");
-            this.setScreen(screen_dict.get(screen_name));
-        }
+    public Impulse() {
+        super();
+        g = this;
     }
 
-	@Override
+    @Override
 	public void create () {
-        Gdx.app.setLogLevel(LOG_DEBUG);
+        Gdx.app.setLogLevel(Application.LOG_DEBUG);
 
-        ModuleRecipes.load();
+        VisUI.load(VisUI.SkinScale.X1);
 
-        VisUI.load(VisUI.SkinScale.X2);
+        if(w == null) {
 
-        screen_dict = new HashMap<String, ImpulseScreenAdapter>();
+            w = new World(new WorldConfigurationBuilder()
+                    .with(new ScreenManager())
 
-        screen_dict.put("menu", new MainMenuScreen(this));
-        screen_dict.put("game", new MainGameScreen(this));
+                    .with(new ConsolePrintSystem())
 
-        setImpulseScreen("menu");
+                    .build());
+        }
 	}
+
+    @Override
+    public void render() {
+        w.setDelta(Gdx.graphics.getDeltaTime());
+        w.process();
+
+        super.render();
+    }
 
     @Override
     public void dispose() {
         super.dispose();
         VisUI.dispose();
-        for(Screen s : screen_dict.values()) {
-            s.dispose();
-        }
+        w.dispose();
+    }
+
+    public static Game game() {
+        if(g != null)
+            return g;
+        else
+            throw new NullPointerException("Impulse.game was null!");
+    }
+
+    public static World world() {
+        if(w != null)
+            return w;
+        else
+            throw new NullPointerException("Impulse.world was null!");
     }
 }

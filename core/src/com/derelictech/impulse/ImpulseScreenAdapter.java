@@ -16,13 +16,13 @@ import com.kotcrab.vis.ui.widget.VisTable;
  * Creation Date: 2017-03-05
  * Description: Abstract Screen
  */
-abstract class ImpulseScreenAdapter extends ScreenAdapter {
-    static Impulse game;
+class ImpulseScreenAdapter extends ScreenAdapter {
+    static Game game;
 
     Stage stage;
     VisTable root;
 
-    ImpulseScreenAdapter(Impulse g) {
+    ImpulseScreenAdapter(Game g) {
         game = g;
     }
 
@@ -38,6 +38,8 @@ abstract class ImpulseScreenAdapter extends ScreenAdapter {
 
         /* Reset the input processor each time this screen is shown */
         Gdx.input.setInputProcessor(stage);
+
+//        stage.setDebugAll(true);
     }
 
     @Override

@@ -4,7 +4,9 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.derelictech.impulse.ecs.system.ScreenManager;
 import com.kotcrab.vis.ui.widget.VisTable;
 import com.kotcrab.vis.ui.widget.VisTextButton;
 
@@ -18,43 +20,75 @@ import com.kotcrab.vis.ui.widget.VisTextButton;
  */
 public class MainMenuScreen extends ImpulseScreenAdapter {
 
-    VisTable blank;
+    Table blank;
     VisTable menu_area;
 
-    public MainMenuScreen(Impulse g) {
+    int MENU_PAD = 1;
+    int MENU_WIDTH = 300;
+
+    boolean debug = false;
+
+    public MainMenuScreen(Game g) {
         super(g);
     }
 
     @Override
     public void show() {
         super.show();
+
         root.left();
 
-        blank = new VisTable();
+        blank = new Table();
         root.add(blank).expand();
 
         menu_area = new VisTable();
-        root.add(menu_area).top();
-        root.add(blank).width(100);
+        root.add(menu_area);
 
-        menu_area.add(blank).height(400);
         menu_area.row();
         VisTextButton play_btn = new VisTextButton("PLAY");
         play_btn.setFocusBorderEnabled(true);
-        menu_area.add(play_btn).width(300).pad(5);
+        menu_area.add(play_btn).width(MENU_WIDTH).pad(MENU_PAD);
+
+        menu_area.row();
+        VisTextButton debug_btn = new VisTextButton("DEBUG");
+        play_btn.setFocusBorderEnabled(true);
+        menu_area.add(debug_btn).fillX().pad(MENU_PAD);
 
         menu_area.row();
         VisTextButton info_btn = new VisTextButton("INFO");
-        menu_area.add(info_btn).fillX().pad(5);
+        menu_area.add(info_btn).fillX().pad(MENU_PAD);
+
         menu_area.row();
-        final VisTextButton quit_btn = new VisTextButton("QUIT");
-        menu_area.add(quit_btn).fillX().pad(5);
+        VisTextButton quit_btn = new VisTextButton("QUIT");
+        menu_area.add(quit_btn).fillX().pad(MENU_PAD);
+
+        stage.addActor(new TestScrollPaneWindow());
+
+
+        /////////////////////////// Listeners //////////////////////////////
 
         play_btn.addListener(new ClickListener(Input.Buttons.LEFT){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                game.setImpulseScreen("game");
+                ScreenManager.setScreen("game");
+            }
+        });
+
+        debug_btn.addListener(new ClickListener(Input.Buttons.LEFT) {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                debug = !debug;
+                stage.setDebugAll(debug);
+            }
+        });
+
+        info_btn.addListener(new ClickListener(Input.Buttons.LEFT) {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                Gdx.app.debug("MAIN_MENU", "Welcome to Impulse!");
             }
         });
 
