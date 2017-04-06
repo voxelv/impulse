@@ -7,6 +7,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.derelictech.impulse.ecs.system.ClearAllEntitiesSystem;
 import com.derelictech.impulse.ecs.system.ConsolePrintSystem;
+import com.derelictech.impulse.ecs.system.ModuleSystem;
 import com.derelictech.impulse.ecs.system.ScreenManager;
 import com.kotcrab.vis.ui.VisUI;
 
@@ -43,6 +44,8 @@ public class Impulse extends Game {
                     .with(new ConsolePrintSystem())
 
                     .with(new ClearAllEntitiesSystem())
+
+                    .with(new ModuleSystem())
 
                     .build());
         }

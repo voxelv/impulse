@@ -36,11 +36,11 @@ public class ConsolePrintSystem extends IntervalIteratingSystem {
 
         if(text.equals("OHAI") && mPrintableText.get(entityId).enabled) {
             mPrintableText.get(entityId).enabled = false;
-            Gdx.app.debug("PRNT_SYS", "msg: " + text + " en: " + mPrintableText.get(entityId).enabled);
+            Gdx.app.debug("PRNT_SYSM", "msg: " + text + " en: " + mPrintableText.get(entityId).enabled);
         }
 
         if(mPrintableText.get(entityId).enabled) {
-            Gdx.app.debug("TAG", "MESSAGE FROM: " + entityId + " SAYING: " + text);
+            Gdx.app.debug("PRNT_SYSM", "entity: " + entityId + " SAYING: " + text);
         }
     }
 }

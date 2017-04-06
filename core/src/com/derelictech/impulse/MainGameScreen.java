@@ -6,8 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.derelictech.impulse.ecs.component.ModuleComponent;
 import com.derelictech.impulse.ecs.system.ClearAllEntitiesSystem;
 import com.derelictech.impulse.ecs.system.ConsolePrintSystem;
+import com.derelictech.impulse.ecs.system.ModuleSystem;
 import com.derelictech.impulse.ecs.system.ScreenManager;
 import com.derelictech.impulse.game.Module;
 import com.kotcrab.vis.ui.FocusManager;
@@ -24,7 +26,6 @@ import com.kotcrab.vis.ui.widget.*;
  */
 public class MainGameScreen extends ImpulseScreenAdapter {
 
-    private Table blank;
     private VisTextButton back_btn;
     private VisValidatableTextField input_text;
     private VisLabel output_text;
@@ -58,6 +59,14 @@ public class MainGameScreen extends ImpulseScreenAdapter {
         root.add(module_btn).fillX().pad(1);
         root.row();
         root.add(back_btn).fillX().pad(1);
+
+        root.row();
+        VisTextButton module1_btn = new VisTextButton("MODULE TYPE1");
+        root.add(module1_btn).fillX().pad(1);
+        root.row();
+        VisTextButton module2_btn = new VisTextButton("MODULE TYPE2");
+        root.add(module2_btn).fillX().pad(1);
+        root.row();
 
         ////////////////////// Event Handling //////////////////////
         back_btn.addListener(new ClickListener(Input.Buttons.LEFT) {
@@ -96,6 +105,20 @@ public class MainGameScreen extends ImpulseScreenAdapter {
                 Module module = new Module();
             }
         });
+
+        module1_btn.addListener(new ClickListener(Input.Buttons.LEFT) {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                ModuleSystem.addModule(ModuleComponent.Type.TYPE1);
+            }
+        });
+
+        module2_btn.addListener(new ClickListener(Input.Buttons.LEFT) {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                ModuleSystem.addModule(ModuleComponent.Type.TYPE2);
+            }
+        });
     }
 
     @Override
@@ -106,6 +129,8 @@ public class MainGameScreen extends ImpulseScreenAdapter {
 
     @Override
     public void render(float delta) {
+        // TODO: Get list of stuff from the world to render, and put it on stage or root to render
+
         super.render(delta);
     }
 }

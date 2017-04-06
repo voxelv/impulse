@@ -16,7 +16,7 @@ public class ClearAllEntitiesSystem extends IteratingSystem {
     static boolean do_it = false;
     static boolean prev_do_it = do_it;
     /**
-     * Creates a new ConsolePrintSystem.
+     * Creates a new ClearAllEntitiesSystem.
      */
     @SuppressWarnings("unchecked")
     public ClearAllEntitiesSystem() {
