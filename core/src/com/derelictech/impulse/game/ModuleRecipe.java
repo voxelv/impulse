@@ -1,5 +1,7 @@
 package com.derelictech.impulse.game;
 
+import com.derelictech.impulse.ecs.component.ModuleComponent;
+
 import java.util.ArrayList;
 
 /**
@@ -11,14 +13,8 @@ import java.util.ArrayList;
  */
 public class ModuleRecipe {
 
-    private ArrayList<Long> xi;
-    private ArrayList<Long> phi;
-
-    public ArrayList<Long> getXI() {
-        return xi;
-    }
-
-    public ArrayList<Long> getPHI() {
-        return phi;
-    }
+    public String name;
+    public ArrayList<Long> xi;
+    public ArrayList<Long> phi;
+    public ModuleComponent.Type type;
 }

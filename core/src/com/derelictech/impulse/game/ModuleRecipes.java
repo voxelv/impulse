@@ -2,9 +2,12 @@ package com.derelictech.impulse.game;
 import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
+import org.json.simple.JSONArray;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -18,6 +21,13 @@ import java.util.HashMap;
  */
 public class ModuleRecipes {
 
+    static final class ModuleRecipesHolder {
+        private JSONArray recipes;
+
+        public ArrayList<ModuleRecipe> getRecipes() {
+            return ((ArrayList<ModuleRecipe>) recipes);
+        }
+    }
     private static ModuleRecipesHolder holder;
 
     public static void load() {
@@ -25,7 +35,8 @@ public class ModuleRecipes {
     }
 
     private static void import_recipes() {
-        FileHandle cnfg_file = Gdx.files.getFileHandle("cnfg_module_recipes.json", Files.FileType.Internal);
+        FileHandle cnfg_file = Gdx.files.internal("cnfg_module_recipes.json");
+        Gdx.app.debug("MODL_RCPS", "json path exists: " + cnfg_file.exists());
 
         Json json = new Json(JsonWriter.OutputType.json);
 
@@ -40,8 +51,8 @@ public class ModuleRecipes {
         Gdx.app.debug("MR", "Hello test from getRecipe" + holder.toString());
         return null;
     }
-}
 
-class ModuleRecipesHolder {
-    private HashMap<String, ModuleRecipe> recipes;
+    public static ArrayList<ModuleRecipe> getRecipes() {
+        return holder.getRecipes();
+    }
 }
