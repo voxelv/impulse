@@ -1,14 +1,10 @@
 package com.derelictech.impulse.game;
-import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
-import org.json.simple.JSONArray;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
 /**
@@ -22,7 +18,7 @@ import java.util.HashMap;
 public class ModuleRecipes {
 
     static final class ModuleRecipesHolder {
-        private JSONArray recipes;
+        private ArrayList recipes;
 
         public ArrayList<ModuleRecipe> getRecipes() {
             return ((ArrayList<ModuleRecipe>) recipes);
