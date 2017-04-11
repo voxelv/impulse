@@ -16,12 +16,13 @@ import java.util.ArrayList;
  * Description: Describes a recipe to make a {@link Module}
  */
 public class ModuleRecipes {
+    private static final String tag = "MODL_RCPS";
 
     static final class ModuleRecipesHolder {
-        private ArrayList recipes;
+        private ArrayList<ModuleRecipe> recipes;
 
-        public ArrayList<ModuleRecipe> getRecipes() {
-            return ((ArrayList<ModuleRecipe>) recipes);
+        ArrayList<ModuleRecipe> getRecipes() {
+            return recipes;
         }
     }
     private static ModuleRecipesHolder holder;
@@ -32,7 +33,7 @@ public class ModuleRecipes {
 
     private static void import_recipes() {
         FileHandle cnfg_file = Gdx.files.internal("cnfg_module_recipes.json");
-        Gdx.app.debug("MODL_RCPS", "json path exists: " + cnfg_file.exists());
+        Gdx.app.debug(tag, "json path exists: " + cnfg_file.exists());
 
         Json json = new Json(JsonWriter.OutputType.json);
 
@@ -44,7 +45,7 @@ public class ModuleRecipes {
     }
 
     public static ModuleRecipe getRecipe(String module_name) {
-        Gdx.app.debug("MR", "Hello test from getRecipe" + holder.toString());
+        Gdx.app.debug(tag, "Hello test from getRecipe" + holder.toString());
         return null;
     }
 
