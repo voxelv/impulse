@@ -41,7 +41,7 @@ public class ModuleRecipes {
 
         holder = json.fromJson(ModuleRecipesHolder.class, cnfg_file);
 
-        Gdx.app.debug("MR", holder.toString());
+        Gdx.app.debug(tag, holder.toString());
     }
 
     public static ModuleRecipe getRecipe(String module_name) {
