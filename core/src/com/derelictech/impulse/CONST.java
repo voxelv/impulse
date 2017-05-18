@@ -22,4 +22,6 @@ public class CONST {
     public static final String PHI = "\u03a6";
 
     public static float MODULE_PROCESS_INTERVAL = 1.0f;
+
+    public static final float INPUT_BUFFER_SECONDS_PER_IMPULSE = 10.0f;
 }

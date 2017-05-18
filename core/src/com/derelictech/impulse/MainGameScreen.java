@@ -139,14 +139,14 @@ public class MainGameScreen extends ImpulseScreenAdapter {
         module1_btn.addListener(new ClickListener(Input.Buttons.LEFT) {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ModuleSystem.addModule(ModuleComponent.Type.TYPE1);
+                ModuleSystem.addModule(ModuleComponent.Type.TYPE1, 1.0f);
             }
         });
 
         module2_btn.addListener(new ClickListener(Input.Buttons.LEFT) {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ModuleSystem.addModule(ModuleComponent.Type.TYPE2);
+                ModuleSystem.addModule(ModuleComponent.Type.TYPE2, 2.0f);
             }
         });
     }

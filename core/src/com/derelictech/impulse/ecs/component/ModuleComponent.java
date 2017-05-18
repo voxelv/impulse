@@ -11,9 +11,11 @@ import com.artemis.Component;
  */
 public class ModuleComponent extends Component {
     public enum Type {
+        INPUT_BUFFER,
+        SCORE_BUFFER,
         TYPE1,
         TYPE2
     }
     public Type type;
-    public boolean online;
+    public boolean online = false;
 }
