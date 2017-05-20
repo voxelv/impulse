@@ -13,6 +13,7 @@ import com.derelictech.impulse.ecs.system.ScreenManager;
 import com.derelictech.impulse.game.Module;
 import com.derelictech.impulse.game.ModuleRecipe;
 import com.derelictech.impulse.game.ModuleRecipes;
+import com.derelictech.impulse.util.CommandLog;
 import com.kotcrab.vis.ui.FocusManager;
 import com.kotcrab.vis.ui.util.Validators;
 import com.kotcrab.vis.ui.widget.*;
@@ -201,7 +202,7 @@ public class MainGameScreen extends ImpulseScreenAdapter {
                     String str = "New Module Button: " + recipe.name + " was clicked!\n" + "  Recipe:" +
                             "\n    " + CONST.XI + ": " + recipe.xi.toString() +
                             "\n    " + CONST.PHI + ": " + recipe.phi.toString();
-                    Gdx.app.debug("GAME_SCRN", str);
+                    CommandLog.push("GAME_SCRN", str);
 
                     infoTextArea.setText(str);
                 }

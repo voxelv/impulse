@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.derelictech.impulse.ecs.system.ScreenManager;
+import com.derelictech.impulse.util.CommandLog;
 import com.kotcrab.vis.ui.widget.VisTable;
 import com.kotcrab.vis.ui.widget.VisTextButton;
 
@@ -86,7 +87,7 @@ public class MainMenuScreen extends ImpulseScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                Gdx.app.debug("MAIN_MENU", "Welcome to Impulse!");
+                CommandLog.push("MAIN_MENU", "Welcome to Impulse!");
             }
         });
 

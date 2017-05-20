@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.derelictech.impulse.Impulse;
 import com.derelictech.impulse.MainGameScreen;
 import com.derelictech.impulse.MainMenuScreen;
+import com.derelictech.impulse.util.CommandLog;
 
 import java.util.HashMap;
 
@@ -47,7 +48,7 @@ public class ScreenManager extends BaseSystem {
 
     public static void setScreen(String screen_id) {
         if(screen_dict.containsKey(screen_id)) {
-            Gdx.app.debug("SCRN_MNGR", "Setting Screen to: " + screen_id);
+            CommandLog.push("SCRN_MNGR", "Setting Screen to: " + screen_id);
             Impulse.game().setScreen(screen_dict.get(screen_id));
             current_screen = screen_id;
         }

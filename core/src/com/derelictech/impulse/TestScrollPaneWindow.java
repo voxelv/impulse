@@ -16,13 +16,17 @@
 
 package com.derelictech.impulse;
 
+import com.derelictech.impulse.util.CommandLog;
 import com.kotcrab.vis.ui.util.TableUtils;
 import com.kotcrab.vis.ui.widget.*;
 
 public class TestScrollPaneWindow extends VisWindow {
+    private VisTable labeltable;
 
     public TestScrollPaneWindow () {
         super("textarea / scrollpane");
+
+        labeltable = new VisTable();
 
         TableUtils.setSpacingDefaults(this);
         columnDefaults(0).left();
@@ -39,15 +43,14 @@ public class TestScrollPaneWindow extends VisWindow {
     private void addVisWidgets () {
         VisTable toptable = new VisTable();
         VisTable bottable = new VisTable();
-        VisTable labeltable = new VisTable();
 
         ScrollableTextArea textArea = new ScrollableTextArea("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis odio.\nFun thing: This text area supports scrolling.");
 
         // ---
 
-        for (int i = 0; i < 20; i++) {
-            VisTextButton vtb = new VisTextButton("Label #" + (i + 1));
-            labeltable.add(vtb).expand().fill().row();
+        for (String s : CommandLog.getLines()) {
+            VisLabel vl = new VisLabel(s);
+            labeltable.add(vl).expand().fill().row();
         }
 
         VisScrollPane scrollPane = new VisScrollPane(labeltable);
@@ -64,5 +67,16 @@ public class TestScrollPaneWindow extends VisWindow {
         vsp.setMaxSplitAmount(0.9f);
 
         add(vsp).grow();
+    }
+
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+
+        labeltable.clear();
+        for (String s : CommandLog.getLines()) {
+            VisLabel vl = new VisLabel(s);
+            labeltable.add(vl).expand().fill().row();
+        }
     }
 }

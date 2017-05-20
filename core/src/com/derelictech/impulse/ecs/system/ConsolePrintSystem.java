@@ -7,6 +7,7 @@ import com.artemis.systems.IntervalIteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.derelictech.impulse.Impulse;
 import com.derelictech.impulse.ecs.component.PrintableText;
+import com.derelictech.impulse.util.CommandLog;
 
 /**
  * Project: impulse
@@ -36,11 +37,11 @@ public class ConsolePrintSystem extends IntervalIteratingSystem {
 
         if(text.equals("OHAI") && mPrintableText.get(entityId).enabled) {
             mPrintableText.get(entityId).enabled = false;
-            Gdx.app.debug("PRNT_SYSM", "msg: " + text + " en: " + mPrintableText.get(entityId).enabled);
+            CommandLog.push("PRNT_SYSM", "msg: " + text + " en: " + mPrintableText.get(entityId).enabled);
         }
 
         if(mPrintableText.get(entityId).enabled) {
-            Gdx.app.debug("PRNT_SYSM", "entity: " + entityId + " SAYING: " + text);
+            CommandLog.push("PRNT_SYSM", "entity: " + entityId + " SAYING: " + text);
         }
     }
 }
