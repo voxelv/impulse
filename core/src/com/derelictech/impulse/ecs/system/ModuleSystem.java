@@ -10,7 +10,7 @@ import com.derelictech.impulse.ecs.component.ImpulseBuffersComponent;
 import com.derelictech.impulse.ecs.component.ModuleComponent;
 import com.derelictech.impulse.ecs.component.ModuleComponent.Type;
 import com.derelictech.impulse.ecs.component.ProgressComponent;
-import com.derelictech.impulse.util.CommandLog;
+import com.derelictech.impulse.util.InfoLog;
 
 import java.util.HashMap;
 
@@ -64,17 +64,17 @@ public class ModuleSystem extends IntervalIteratingSystem {
             case INPUT_BUFFER:
                 if(processProgress(entityId, moduleComp, progressComp)) {
                     bufComp.buffers.put("internal", 1L);
-                    CommandLog.push("MODL_SYSM", "INPUT has: " + 1L);
+                    InfoLog.push("MODL_SYSM", "INPUT has: " + 1L);
                 }
                 break;
             case SCORE_BUFFER:
-                CommandLog.push("MODL_SYSM", "Processed SCORE_BUFFER");
+                InfoLog.push("MODL_SYSM", "Processed SCORE_BUFFER");
                 break;
             case TYPE1:
-                CommandLog.push("MODL_SYSM", "got TYPE1");
+                InfoLog.push("MODL_SYSM", "got TYPE1");
                 break;
             case TYPE2:
-                CommandLog.push("MODL_SYSM", "got TYPE2");
+                InfoLog.push("MODL_SYSM", "got TYPE2");
                 break;
             default:
                 break;

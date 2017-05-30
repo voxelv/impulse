@@ -3,7 +3,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
-import com.derelictech.impulse.util.CommandLog;
+import com.derelictech.impulse.util.InfoLog;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,7 @@ public class ModuleRecipes {
 
     private static void import_recipes() {
         FileHandle cnfg_file = Gdx.files.internal("cnfg_module_recipes.json");
-        CommandLog.push(tag, "json path exists: " + cnfg_file.exists());
+        InfoLog.push(tag, "json path exists: " + cnfg_file.exists());
 
         Json json = new Json(JsonWriter.OutputType.json);
 
@@ -42,11 +42,11 @@ public class ModuleRecipes {
 
         holder = json.fromJson(ModuleRecipesHolder.class, cnfg_file);
 
-        CommandLog.push(tag, holder.toString());
+        InfoLog.push(tag, holder.toString());
     }
 
     public static ModuleRecipe getRecipe(String module_name) {
-        CommandLog.push(tag, "Hello test from getRecipe" + holder.toString());
+        InfoLog.push(tag, "Hello test from getRecipe" + holder.toString());
         return null;
     }
 

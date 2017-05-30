@@ -7,9 +7,11 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.derelictech.impulse.ecs.system.ScreenManager;
-import com.derelictech.impulse.util.CommandLog;
+import com.derelictech.impulse.util.InfoLog;
 import com.kotcrab.vis.ui.widget.VisTable;
 import com.kotcrab.vis.ui.widget.VisTextButton;
+
+import javax.sound.midi.MidiDevice;
 
 /**
  * Project: impulse
@@ -22,7 +24,7 @@ import com.kotcrab.vis.ui.widget.VisTextButton;
 public class MainMenuScreen extends ImpulseScreenAdapter {
 
     Table blank;
-    VisTable menu_area;
+    VisTable menuArea;
 
     int MENU_PAD = 1;
     int MENU_WIDTH = 300;
@@ -38,30 +40,34 @@ public class MainMenuScreen extends ImpulseScreenAdapter {
         root.left();
 
         blank = new Table();
-        root.add(blank).expand();
+        root.add(blank).bottom().left().expand();
 
-        menu_area = new VisTable();
-        root.add(menu_area);
+        VisTable infoLog = InfoLog.getTable();
+        blank.add(infoLog).height(100).row();
+        blank.add(infoLog).height(100).row();
 
-        menu_area.row();
+        menuArea = new VisTable();
+        root.add(menuArea);
+
+        menuArea.row();
         VisTextButton play_btn = new VisTextButton("PLAY");
         play_btn.setFocusBorderEnabled(true);
-        menu_area.add(play_btn).width(MENU_WIDTH).pad(MENU_PAD);
+        menuArea.add(play_btn).width(MENU_WIDTH).pad(MENU_PAD);
 
-        menu_area.row();
+        menuArea.row();
         VisTextButton debug_btn = new VisTextButton("DEBUG");
         play_btn.setFocusBorderEnabled(true);
-        menu_area.add(debug_btn).fillX().pad(MENU_PAD);
+        menuArea.add(debug_btn).fillX().pad(MENU_PAD);
 
-        menu_area.row();
+        menuArea.row();
         VisTextButton info_btn = new VisTextButton("INFO");
-        menu_area.add(info_btn).fillX().pad(MENU_PAD);
+        menuArea.add(info_btn).fillX().pad(MENU_PAD);
 
-        menu_area.row();
+        menuArea.row();
         VisTextButton quit_btn = new VisTextButton("QUIT");
-        menu_area.add(quit_btn).fillX().pad(MENU_PAD);
+        menuArea.add(quit_btn).fillX().pad(MENU_PAD);
 
-        stage.addActor(new TestScrollPaneWindow());
+//        stage.addActor(new TestScrollPaneWindow());
 
 
         /////////////////////////// Listeners //////////////////////////////
@@ -87,7 +93,7 @@ public class MainMenuScreen extends ImpulseScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                CommandLog.push("MAIN_MENU", "Welcome to Impulse!");
+                InfoLog.push("MAIN_MENU", "Welcome to Impulse!");
             }
         });
 

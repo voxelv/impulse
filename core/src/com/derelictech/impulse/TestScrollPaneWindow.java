@@ -16,17 +16,14 @@
 
 package com.derelictech.impulse;
 
-import com.derelictech.impulse.util.CommandLog;
+import com.derelictech.impulse.util.InfoLog;
 import com.kotcrab.vis.ui.util.TableUtils;
 import com.kotcrab.vis.ui.widget.*;
 
 public class TestScrollPaneWindow extends VisWindow {
-    private VisTable labeltable;
 
     public TestScrollPaneWindow () {
         super("textarea / scrollpane");
-
-        labeltable = new VisTable();
 
         TableUtils.setSpacingDefaults(this);
         columnDefaults(0).left();
@@ -48,35 +45,12 @@ public class TestScrollPaneWindow extends VisWindow {
 
         // ---
 
-        for (String s : CommandLog.getLines()) {
-            VisLabel vl = new VisLabel(s);
-            labeltable.add(vl).expand().fill().row();
-        }
-
-        VisScrollPane scrollPane = new VisScrollPane(labeltable);
-        scrollPane.setFlickScroll(false);
-        scrollPane.setFadeScrollBars(false);
-
-        // ---
-
         toptable.add(textArea.createCompatibleScrollPane()).grow().row();
-        bottable.add(scrollPane).spaceTop(8).growX().row();
 
-        VisSplitPane vsp = new VisSplitPane(toptable, bottable, true);
+        VisSplitPane vsp = new VisSplitPane(toptable, InfoLog.getTable(), true);
         vsp.setMinSplitAmount(0.1f);
         vsp.setMaxSplitAmount(0.9f);
 
         add(vsp).grow();
-    }
-
-    @Override
-    public void act(float delta) {
-        super.act(delta);
-
-        labeltable.clear();
-        for (String s : CommandLog.getLines()) {
-            VisLabel vl = new VisLabel(s);
-            labeltable.add(vl).expand().fill().row();
-        }
     }
 }
