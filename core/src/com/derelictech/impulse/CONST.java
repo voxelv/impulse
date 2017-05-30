@@ -24,4 +24,8 @@ public class CONST {
     public static float MODULE_PROCESS_INTERVAL = 1.0f;
 
     public static final float INPUT_BUFFER_SECONDS_PER_IMPULSE = 10.0f;
+
+    static int LIST_ELEMENT_HEIGHT = 30;
+    static int LIST_ELEMENT_PAD = 0;
+    static int LIST_ELEMENT_WIDTH = 400;
 }

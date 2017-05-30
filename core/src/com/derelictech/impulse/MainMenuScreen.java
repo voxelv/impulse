@@ -11,8 +11,6 @@ import com.derelictech.impulse.util.InfoLog;
 import com.kotcrab.vis.ui.widget.VisTable;
 import com.kotcrab.vis.ui.widget.VisTextButton;
 
-import javax.sound.midi.MidiDevice;
-
 /**
  * Project: impulse
  * Package: com.derelictech.impulse
@@ -23,7 +21,7 @@ import javax.sound.midi.MidiDevice;
  */
 public class MainMenuScreen extends ImpulseScreenAdapter {
 
-    Table blank;
+    Table mainTable;
     VisTable menuArea;
 
     int MENU_PAD = 1;
@@ -37,14 +35,11 @@ public class MainMenuScreen extends ImpulseScreenAdapter {
     public void show() {
         super.show();
 
-        root.left();
+        root.bottom().left();
 
-        blank = new Table();
-        root.add(blank).bottom().left().expand();
-
-        VisTable infoLog = InfoLog.getTable();
-        blank.add(infoLog).height(100).row();
-        blank.add(infoLog).height(100).row();
+        mainTable = new Table();
+        mainTable.bottom().left();
+        root.add(mainTable).grow();
 
         menuArea = new VisTable();
         root.add(menuArea);

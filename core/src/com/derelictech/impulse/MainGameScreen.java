@@ -36,10 +36,6 @@ public class MainGameScreen extends ImpulseScreenAdapter {
 
     private ScrollableTextArea infoTextArea;
 
-    private int LIST_ELEMENT_HEIGHT = 30;
-    private int LIST_ELEMENT_PAD = 0;
-    private int LIST_ELEMENT_WIDTH = 400;
-
     public MainGameScreen(Game g) {
         super(g);
     }
@@ -47,6 +43,8 @@ public class MainGameScreen extends ImpulseScreenAdapter {
     @Override
     public void show() {
         super.show();
+
+        root.bottom().left();
 
         ModuleRecipes.load();
 
@@ -65,23 +63,23 @@ public class MainGameScreen extends ImpulseScreenAdapter {
 
             VisTable dbg_menu = new VisTable();
 
-                dbg_menu.add(new VisLabel("HELLO GAME SCENE")).pad(LIST_ELEMENT_PAD).height(LIST_ELEMENT_HEIGHT);
+                dbg_menu.add(new VisLabel("HELLO GAME SCENE")).pad(CONST.LIST_ELEMENT_PAD).height(CONST.LIST_ELEMENT_HEIGHT);
 
                 dbg_menu.row();
-                dbg_menu.add(output_text).left().pad(LIST_ELEMENT_PAD).height(LIST_ELEMENT_HEIGHT);
+                dbg_menu.add(output_text).left().pad(CONST.LIST_ELEMENT_PAD).height(CONST.LIST_ELEMENT_HEIGHT);
                 dbg_menu.row();
-                dbg_menu.add(input_text).width(LIST_ELEMENT_WIDTH).pad(LIST_ELEMENT_PAD).height(LIST_ELEMENT_HEIGHT);
+                dbg_menu.add(input_text).width(CONST.LIST_ELEMENT_WIDTH).pad(CONST.LIST_ELEMENT_PAD).height(CONST.LIST_ELEMENT_HEIGHT);
                 dbg_menu.row();
 
                 VisTextButton module_btn= new VisTextButton("NEW MODULE");
-                dbg_menu.add(module_btn).fillX().pad(LIST_ELEMENT_PAD).height(LIST_ELEMENT_HEIGHT);
+                dbg_menu.add(module_btn).fillX().pad(CONST.LIST_ELEMENT_PAD).height(CONST.LIST_ELEMENT_HEIGHT);
 
                 dbg_menu.row();
                 VisTextButton module1_btn = new VisTextButton("MODULE TYPE1");
-                dbg_menu.add(module1_btn).fillX().pad(LIST_ELEMENT_PAD).height(LIST_ELEMENT_HEIGHT);
+                dbg_menu.add(module1_btn).fillX().pad(CONST.LIST_ELEMENT_PAD).height(CONST.LIST_ELEMENT_HEIGHT);
                 dbg_menu.row();
                 VisTextButton module2_btn = new VisTextButton("MODULE TYPE2");
-                dbg_menu.add(module2_btn).fillX().pad(LIST_ELEMENT_PAD).height(LIST_ELEMENT_HEIGHT);
+                dbg_menu.add(module2_btn).fillX().pad(CONST.LIST_ELEMENT_PAD).height(CONST.LIST_ELEMENT_HEIGHT);
                 dbg_menu.row();
 
             mainAreaMenu.add(dbg_menu).top();
@@ -97,9 +95,9 @@ public class MainGameScreen extends ImpulseScreenAdapter {
         root.add(new Table()).expand();
         root.row();
 
-        root.add(InfoLog.getTable()).height(300).bottom().left().expand().row();
+        root.add(InfoLog.getTable()).height(300).growX().row();
 
-        root.add(back_btn).fillX().pad(LIST_ELEMENT_PAD).height(LIST_ELEMENT_HEIGHT).bottom().left().width(LIST_ELEMENT_WIDTH);
+        root.add(back_btn).fillX().pad(CONST.LIST_ELEMENT_PAD).height(CONST.LIST_ELEMENT_HEIGHT).bottom().left().width(CONST.LIST_ELEMENT_WIDTH);
 
         ////////////////////// Event Handling //////////////////////
         back_btn.addListener(new ClickListener(Input.Buttons.LEFT) {
@@ -158,29 +156,7 @@ public class MainGameScreen extends ImpulseScreenAdapter {
         VisTable infoTable = new VisTable();
         infoTable.top();
 
-        infoTextArea = new ScrollableTextArea("")
-//        TODO: Clear text after some seconds, implement later
-//        {
-//            Timer.Task clearTimer = new Timer.Task(){
-//                @Override
-//                public void run() {
-//                    setText("");
-//                }
-//            };
-//            public void setText(String str) {
-//                super.setText(str);
-//
-//                if(clearTimer != null && !str.equals("")) {
-//                    if (clearTimer.isScheduled()) {
-//                        clearTimer.cancel();
-//                    } else {
-//                        Timer.schedule(clearTimer, 3);
-//                    }
-//                }
-//            }
-//        }
-        ;
-
+        infoTextArea = new ScrollableTextArea("");
         infoTable.add(infoTextArea).size(400, 150);
 
         return infoTable;
@@ -194,7 +170,7 @@ public class MainGameScreen extends ImpulseScreenAdapter {
         ArrayList<ModuleRecipe> moduleRecipes = ModuleRecipes.getRecipes();
         for(final ModuleRecipe recipe : moduleRecipes) {
             VisTextButton btn = new VisTextButton(recipe.name);
-            moduleListTable.add(btn).pad(LIST_ELEMENT_PAD).height(LIST_ELEMENT_HEIGHT);
+            moduleListTable.add(btn).pad(CONST.LIST_ELEMENT_PAD).height(CONST.LIST_ELEMENT_HEIGHT);
             moduleListTable.row();
 
             //////////////////////

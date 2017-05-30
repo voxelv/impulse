@@ -1,6 +1,6 @@
 package com.derelictech.impulse.util;
 
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -26,11 +26,15 @@ public class AutoScrollingTextTable extends VisTable {
 
     private ArrayList<VisLabel> lines = new ArrayList<VisLabel>();
 
-    private VisTable table = new VisTable();
-    private VisScrollPane scrollPane = new VisScrollPane(table);
+    private VisTable table;
+    private VisScrollPane scrollPane;
 
     public AutoScrollingTextTable() {
-        add(scrollPane).bottom().left().expand();
+        table = new VisTable();
+        table.bottom().left();
+        scrollPane = new VisScrollPane(table);
+        add(scrollPane).grow().bottom().left();
+
         scrollPane.setSmoothScrolling(false);
 
         addListener(new ClickListener(){
@@ -49,14 +53,16 @@ public class AutoScrollingTextTable extends VisTable {
     }
 
     public void push(String line) {
+        VisLabel label;
         if(lines.size() < MAX_LINES) {
-            lines.add(new VisLabel(line));
+            label = new VisLabel();
         }
         else {
-            VisLabel tmp = lines.remove(0);
-            tmp.setText(line);
-            lines.add(tmp);
+            label = lines.remove(0);
         }
+        label.setText(line);
+        lines.add(label);
+
         dirty = true;
     }
 
@@ -70,13 +76,19 @@ public class AutoScrollingTextTable extends VisTable {
         if(dirty) {
             scrollPane.updateVisualScroll();
             table.clearChildren();
+            float alpha = 0.0f;
+            Color c;
             for(VisLabel v : lines) {
+                alpha += 1.0f/lines.size();
                 table.add(v).left().row();
+                c = v.getColor();
+                c.a = alpha;
+                v.setColor(c);
             }
             if(!mouseOver) {
                 scrollPane.scrollTo(0, 0, 0, 0);
+                scrollPane.updateVisualScroll();
             }
-            scrollPane.updateVisualScroll();
             dirty = false;
         }
     }
