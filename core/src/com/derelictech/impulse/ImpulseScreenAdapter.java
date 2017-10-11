@@ -31,7 +31,7 @@ class ImpulseScreenAdapter extends ScreenAdapter {
     @Override
     public void show() {
         /* Setup stage */
-        stage = new Stage(new FillViewport(CONST.INIT_SCREEN_W, CONST.INIT_SCREEN_H));
+        stage = new Stage(new FitViewport(CONST.INIT_SCREEN_W, CONST.INIT_SCREEN_H));
 
         /* Setup root table */
         root = new VisTable();
